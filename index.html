@@ -19,17 +19,12 @@
 	<button ng-click="menu.menuItems(searchTerm);" class="btn btn-primary">Narrow It Down For Me!</button>
       </div>
 
-      <div class=form-group>
-      <ul>
-        <li ng-repeat="item in menu.found">
-	  {{ item.name }}, 
-	  {{ item.short_name }}, 
-          {{ item.description }}
-	  <button ng-click="menu.dontWantThis($index);">Remove Item</button>
-	</li>
-	<div ng-if="menu.found.length===0">Nothing found</div>
-      </ul>
-      </div>
+      <menu-list
+	 found="menu.found"
+	 dont-want-this="menu.dontWantThis(index)"></menu-list>
+
+      <div ng-if="menu.found.length===0">Nothing found</div>
+      
     </div>
   </body>
 </html>

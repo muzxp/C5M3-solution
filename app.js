@@ -1,10 +1,23 @@
 (function () {
     'use strict';
     angular.module('NarrowItDownApp', [])
-	.controller('MenuCategoriesController', MenuCategoriesController)
-	.service('MenuCategoriesService', MenuCategoriesService)
-	.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
+    .controller('MenuCategoriesController', MenuCategoriesController)
+    .service('MenuCategoriesService', MenuCategoriesService)
+    .directive('menuList', MenuListDirective)
+    .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
+    function MenuListDirective() {
+	console.log("HERE  in MenuListDirective");
+	var ddo = {
+	    templateUrl: 'menuList.html',
+	    scope: {
+		found: '<',
+		dontWantThis: '&' 
+	    },
+	};
+	return ddo;
+    }
+    
     MenuCategoriesController.$inject = ['MenuCategoriesService'];
     function MenuCategoriesController(MenuCategoriesService) {
 	var menu = this;
